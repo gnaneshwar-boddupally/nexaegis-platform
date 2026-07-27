@@ -1,0 +1,59 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  const handleLogin = () => {
+    if (email === "admin@nexaegis.com" && password === "1234") {
+      alert("Login Successful");
+      router.push("/dashboard");
+    } else {
+      alert("Invalid Credentials");
+    }
+  };
+
+  return (
+    <main style={{
+      background: "black",
+      color: "white",
+      height: "100vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    }}>
+      <div style={{border:"1px solid gray", padding:"30px", borderRadius:"10px"}}>
+        <h2 style={{color:"#00BFFF"}}>Login</h2>
+
+        <input
+          type="email"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+          style={{display:"block", margin:"10px 0", padding:"10px", width:"250px"}}
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          style={{display:"block", margin:"10px 0", padding:"10px", width:"250px"}}
+        />
+
+        <button onClick={handleLogin} style={{
+          marginTop:"10px",
+          padding:"10px",
+          width:"100%",
+          background:"#00BFFF",
+          color:"black",
+          border:"none"
+        }}>
+          Login
+        </button>
+      </div>
+    </main>
+  );
+}
